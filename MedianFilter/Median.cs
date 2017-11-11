@@ -19,11 +19,11 @@ namespace MedianFilter
 					if (radius > 0)
 					{
 						var neighbours = new List<int>();
-						Parallel.For(x - radius, x + radius, new Action<long>((i) =>
+						Parallel.For(x - radius, x + radius + 1, new Action<long>((i) =>
 						{
-							Parallel.For(y - radius, y + radius, new Action<long>((j) =>
+							Parallel.For(y - radius, y + radius + 1, new Action<long>((j) =>
 							{
-								if (i > 0 & i <= w - 1 & j > 0 && j <= h - 1)
+								if (i >= 0 & i < w && j >= 0 && j < h)
 									neighbours.Add(bytes[i, j]);
 							}));
 						}));
