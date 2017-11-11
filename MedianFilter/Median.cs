@@ -31,6 +31,10 @@ namespace MedianFilter
 						if (neighbours.Count > 1)
 							newBytes[x, y] = neighbours[neighbours.Count / 2];
 					}
+					else
+					{
+						newBytes[x, y] = bytes[x, y];
+					}
 				}));
 			}));
 			return newBytes;

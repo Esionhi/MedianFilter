@@ -36,6 +36,8 @@ namespace MedianFilter
 				for (int y = 0; y < bitmap.Height; y++)
 					pixels[x, y] = bitmap.GetPixel(x, y).ToArgb();
 
+			radiusTrackBar.Enabled = false;
+			loadFileButton.Enabled = false;
 			status.Text = "Processing...";
 			var r = radiusTrackBar.Value;
 			worker.RunWorkerAsync(new FilterModel
@@ -70,6 +72,8 @@ namespace MedianFilter
 
 			filteredPictureBox.Image = newBitmap;
 			status.Text = "Done";
+			radiusTrackBar.Enabled = true;
+			loadFileButton.Enabled = true;
 		}
 	}
 
